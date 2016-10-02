@@ -16,21 +16,21 @@ for android: react-native run-android *you have to have an android emulator crea
 index.android.js, index.ios.js - this is the inital place for the react-native build for specific platform
 *note: - you can add '.android.js or .ios.js' at the end of a component to specify that it's only used for that specific platform* 
 
-app - this is where all the app code will live\n
- |\n
- |- index.js - this is the initial place where the app gets loaded\n
- |\n
- |- assets: - all assets, images, videos, sounds\n
- |\n
- |- config: - all relative paths and config files\n
- | \n
- |- js:\n
-     |- components: all components for different pages, views, etc.\n
-     |\n
-     |- constants: all components that are constant (header bar, footer bar, buttons, etc.)\n
-     |\n
-     |- json: any static json files\n
-     |\n
-     |- libs: custom libraries that have been written, however, most files here should be found in a npm package\n
-     |\n
-     |- routes: code for routing to different components for view transitions\n
+app - this is where all the app code will live
+ |
+ |- index.js - this is the initial place where the app gets loaded
+ |
+ |- assets: - all assets, images, videos, sounds
+ |
+ |- config: - all relative paths and config files
+ | 
+ |- js:
+     |- components: all components for different pages, views, etc.
+     |
+     |- constants: all components that are constant (header bar, footer bar, buttons, etc.)
+     |
+     |- json: any static json files
+     |
+     |- libs: custom libraries that have been written, however, most files here should be found in a npm package
+     |
+     |- routes: code for routing to different components for view transitions
