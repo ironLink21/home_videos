@@ -6,11 +6,11 @@ import * as firebase              from 'firebase';
 
 // Initialize Firebase
 var config = {
-apiKey: "AIzaSyDr7HOBy0gpDG7RA4Xlgp8gSey8mDDdPnw",
-authDomain: "homemovies-15741.firebaseapp.com",
-databaseURL: "https://homemovies-15741.firebaseio.com",
-storageBucket: "",
-messagingSenderId: "266886711745"
+  apiKey: "AIzaSyDr7HOBy0gpDG7RA4Xlgp8gSey8mDDdPnw",
+  authDomain: "homemovies-15741.firebaseapp.com",
+  databaseURL: "https://homemovies-15741.firebaseio.com",
+  storageBucket: "",
+  messagingSenderId: "266886711745"
 };
 firebase.initializeApp(config);
 
