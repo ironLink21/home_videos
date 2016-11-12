@@ -4,6 +4,8 @@ import React, { Component }                     from 'react';
 import { AppRegistry, StyleSheet, Text, View }  from 'react-native';
 import * as firebase                            from 'firebase';
 import MyStatusBar                              from './js/common/statusBar';
+import Movie                                    from './js/movie/movie';
+import Login                                    from './js/login/login';
 
 // Initialize Firebase
 var config = {
@@ -13,18 +15,21 @@ var config = {
   storageBucket: "",
   messagingSenderId: "266886711745"
 };
-var firebaseApi = firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 export default class homeVideo extends Component {
   constructor(props) {
     super(props);
-    this.state = { firebase: firebaseApi };
+    this.state = { authenticated: false };
   }
 
   render() {
+    var homePage = (this.state.authenticated) ? <Movie /> : <Login />;
+
     return (
       <View style={styles.container}>
           <MyStatusBar styles={ {backgroundColor: "teal", height: 20 } } />
+          { homePage }
       </View>
     );
   }

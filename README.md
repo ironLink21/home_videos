@@ -13,6 +13,9 @@ for ios: react-native run-ios *you can only run this on mac, it will automatical
 for android: react-native run-android *you have to have an android emulator created and running first before this will work*
 --setup an [android emulator](https://developer.android.com/studio/run/managing-avds.html)
 
+# firebase stuff
+Future modifications to database.rules.json will update Database Rules when you run
+*firebase deploy*.
 
 # FILE STRUCTURE
 ./android, ./ios - you don't usually need to modify content in these directories

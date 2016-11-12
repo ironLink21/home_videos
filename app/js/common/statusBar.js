@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component, Platform, TouchableHighlight, TouchableNativeFeedback }  from 'react';
-import { View, StyleSheet, StatusBar }                                              from 'react-native';
+import { View, StyleSheet, StatusBar, Button }                                      from 'react-native';
 
 export default class MyStatusBar extends Component {
     constructor(props){
@@ -23,7 +23,6 @@ export default class MyStatusBar extends Component {
             <View style={ propStyle }>
                 <StatusBar  backgroundColor={ android } 
                             barStyle={ iOS } />
-                
             </View>
         )
     }

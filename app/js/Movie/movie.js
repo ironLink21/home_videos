@@ -8,7 +8,7 @@ export default class Movie extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <div>welcome to movies</div>
+        <Text>welcome to movies</Text>
 
       </View>
     );
