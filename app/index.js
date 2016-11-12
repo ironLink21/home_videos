@@ -12,12 +12,12 @@ var config = {
   storageBucket: "",
   messagingSenderId: "266886711745"
 };
-firebase.initializeApp(config);
+var firebaseApi = firebase.initializeApp(config);
 
 export default class homeVideo extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { firebase: firebaseApi };
   }
 
   render() {
