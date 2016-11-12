@@ -1,8 +1,9 @@
 'use strict';
 
-import React, { Component }       from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-import * as firebase              from 'firebase';
+import React, { Component }                     from 'react';
+import { AppRegistry, StyleSheet, Text, View }  from 'react-native';
+import * as firebase                            from 'firebase';
+import MyStatusBar                              from './js/common/statusBar';
 
 // Initialize Firebase
 var config = {
@@ -23,16 +24,7 @@ export default class homeVideo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+          <MyStatusBar styles={ {backgroundColor: "teal", height: 20 } } />
       </View>
     );
   }

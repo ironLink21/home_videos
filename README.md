@@ -5,6 +5,9 @@ modify the 'sdk.dir = *< path to local android sdk>*'
     mac example: /Users/USERNAME/Library/Android/sdk
     linux example: /opt/Android/sdk - or where ever you have android sdk installed
 
+# APP MOCKUPS
+https://app.moqups.com/haleyrmanning@gmail.com/mdcLooPHcO/edit/activate/HobpbhyaTp
+
 # RUN APP ON EMULATOR
 for ios: react-native run-ios *you can only run this on mac, it will automatically start an iOS emulator*
 for android: react-native run-android *you have to have an android emulator created and running first before this will work*
