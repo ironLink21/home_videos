@@ -27,7 +27,7 @@ export default class Login extends Component {
   }
 
   render() {
-    var emailLogin = <div>
+    var emailLogin = <View>
       <TextInput 
         autoFocus={true}
         keyboardType={'email-address'}
@@ -43,7 +43,7 @@ export default class Login extends Component {
         color="#841584"
         accessibilityLabel="click to login"
       />
-    </div>
+    </View>
 
     return (
       <View style={styles.container}>
