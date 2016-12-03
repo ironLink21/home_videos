@@ -1,50 +1,22 @@
-'use strict';
 
-import React, { Component }                     from 'react';
-import { AppRegistry, StyleSheet, Text, View }  from 'react-native';
-import * as firebase                            from 'firebase';
-import MyStatusBar                              from './js/common/statusBar';
 
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyDr7HOBy0gpDG7RA4Xlgp8gSey8mDDdPnw",
-  authDomain: "homemovies-15741.firebaseapp.com",
-  databaseURL: "https://homemovies-15741.firebaseio.com",
-  storageBucket: "",
-  messagingSenderId: "266886711745"
-};
-var firebaseApi = firebase.initializeApp(config);
+import React, {Component}               from 'react';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider }                     from 'react-redux';
+import thunk                            from 'redux-thunk';
+import * as reducers                    from './js/reducers';
+import HomeVideo                        from './js/components/home_video';
 
-export default class homeVideo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { firebase: firebaseApi };
-  }
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const reducer = combineReducers(reducers);
+const store = createStoreWithMiddleware(reducer);
 
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-          <MyStatusBar styles={ {backgroundColor: "teal", height: 20 } } />
-      </View>
+      <Provider store={store}>
+        <HomeVideo />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

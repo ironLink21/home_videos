@@ -1,10 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict';
 
-import { AppRegistry } from 'react-native';
-import homeVideo       from './app';
+import React, { AppRegistry } from 'react-native';
+import App                    from './app';
 
-AppRegistry.registerComponent('homeVideo', () => homeVideo);
+AppRegistry.registerComponent('home_video', () => App);

@@ -1,4 +1,0 @@
-# TODO: you need to setup your local environment
-# for mac: /Users/USERNAME/Library/Android/sdk
-# for linux: /opt/Android/sdk - or where ever you have android sdk installed 
-sdk.dir = < path to local android sdk>
