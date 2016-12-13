@@ -5,6 +5,7 @@ import { StyleSheet, View }     from 'react-native';
 import {bindActionCreators}     from 'redux';
 import * as application         from '../actions/application';
 import { connect }              from 'react-redux';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon } from 'native-base';
 
 import Login                    from './Login';
 
@@ -48,10 +49,27 @@ class HomeVideo extends Component {
     const { state, actions } = this.props;
     return (
       <View style={styles.container}>
-          <Login
-              handleGoogleOath={()=>this.handleGoogleOath}
-              handleEmailLogin={()=>this.handleEmailLogin}
-          />
+            <Container> 
+                <Header>
+                    <Title>Home Videos</Title>
+                </Header>
+
+                <Content>
+
+                       
+                          <Login
+                              handleGoogleOath={()=>this.handleGoogleOath}
+                              handleEmailLogin={()=>this.handleEmailLogin}
+                            />
+                        
+                 </Content>
+
+                <Footer>
+                    <FooterTab>
+                         
+                    </FooterTab>
+                </Footer>
+            </Container>
       </View>
     );
   }

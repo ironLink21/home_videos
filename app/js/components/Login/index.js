@@ -54,12 +54,7 @@ export default class Login extends Component {
         />
 
         {renderIf(!this.state.isEmail)(
-            <Button
-                onPress={this.props.handleGoogleOath}
-                title="Google Login"
-                color="#00ff00"
-                accessibilityLabel="Use youre google account to login"
-            />
+            
         )}
 
         {renderIf(this.state.isEmail)(
