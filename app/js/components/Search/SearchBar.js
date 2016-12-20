@@ -4,6 +4,8 @@ import React, { Component }                             from 'react';
 import { StyleSheet, Text, View, TextInput, Button }    from 'react-native';
 import renderIf                                         from '../common/renderIf';
 import { Container, Header, Title, Content, Icon, CardItem, Card, Input, InputGroup} from 'native-base';
+import imdb                                             from 'imdb-api';
+
 
 
 

@@ -16,7 +16,7 @@ export default class AddMovieResults extends Component {
     });
 
     var movie = this;        
-        imdb.getReq({ name: this.state.search }, function(err, things) {movie = things;})         
+        imdb.get(this.state.search)       
     .then((response) => response.json())            
     .then((responseJson) => {      
         // Store the results in the state variable results and set loading to                 

@@ -5,6 +5,8 @@ import { StyleSheet, Text, View, TextInput, Button }    from 'react-native';
 import renderIf                                         from '../common/renderIf';
 import { Container, Header, Title, Content} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import imdb                                             from 'imdb-api';
+
 import AddMovieResults  from './AddMovieResults';
 import SearchBar  from './SearchBar';
 
