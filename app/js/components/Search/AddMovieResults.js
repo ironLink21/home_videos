@@ -3,6 +3,7 @@
 import React, { Component }                             from 'react';
 import { StyleSheet, Text, View, TextInput, Button }    from 'react-native';
 import renderIf                                         from '../common/renderIf';
+import imdb                                             from 'imdb-api';
 import { Container, Content, Icon, CardItem, Card, Thumbnail, Title, List, ListItem} from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -37,21 +38,32 @@ export default class AddMovieResults extends Component {
 
   render() {
     return (
+
                     <Card scrollEnabled={true}> 
                         <CardItem button >  
-                         <Row>                    
-                            <Col size={1}>
-                                <Thumbnail square style={{ height: 90, width:60, bottom:6,justifyContent: 'center',}} source={require('/Users/weston/Documents/home_videos/app/Image/movie.jpeg')} />
-                            </Col>
-                            <Col size={3} style={{justifyContent: 'center', left:10,}}>
-                                <Row size={3}>
-                                  <Text style={{ fontSize: 25, color: '#DD5044',justifyContent: 'center',}}>Movie Title</Text>
-                                </Row>
-                                <Row size={1}>
-                                 <Text style={{ fontSize: 15, color: '#DD5044',}}>2016</Text>
-                                </Row>
-                            </Col>
-                        </Row>
+
+                           <List dataArray={this.state.results.items} renderRow={(item) =>               
+                                <ListItem buttononPress={()=>this.setModalVisible(true, item)} 
+                                <Row> 
+
+                                  <Col size={1}>
+                                    <Thumbnail square style={{ height: 90, width:60, bottom:6,justifyContent: 'center',}} source={{uri: item.poster}} /> 
+                                  </Col>  
+
+                                  <Col size={3}>
+                                    
+                                    <Row size={3}> 
+                                    <Text style={{ fontSize: 25, color: '#DD5044',justifyContent: 'center',}}>{item.title}</Text>      
+                                    </Row>
+
+                                    <Row size={1}>
+                                    <Text style={{ fontSize: 15, color: '#DD5044',}}>{item._year_data}</Text>    
+                                   </Row>
+                                   
+                                   </Col>
+                                  </Row>  
+                                </ListItem>                            
+                            } />
                         </CardItem>
                     </Card> 
     );
