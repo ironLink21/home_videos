@@ -15,20 +15,20 @@ export default class AddMovieResults extends Component {
         loading: true          
     });
 
-    var that = this;        
+    var movie = this;        
         imdb.getReq({ name: this.state.search }, function(err, things) {movie = things;})         
     .then((response) => response.json())            
     .then((responseJson) => {      
         // Store the results in the state variable results and set loading to                 
          // false to remove the spinner and display the list of repositories                
-          that.setState({                    
+          movie.setState({                    
         results: responseJson,                    
         loading: false                
     });
     return responseJson.Search;            
 }) 
     .catch((error) => {
-        that.setState({                    
+        movie.setState({                    
         loading: false                 
     });
         console.error(error);        
@@ -43,7 +43,7 @@ export default class AddMovieResults extends Component {
                         <CardItem button >  
 
                            <List dataArray={this.state.results.items} renderRow={(item) =>               
-                                <ListItem buttononPress={()=>this.setModalVisible(true, item)} 
+                                <ListItem button >
                                 <Row> 
 
                                   <Col size={1}>
