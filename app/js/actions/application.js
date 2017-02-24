@@ -14,3 +14,9 @@ export function googleOath() {
     type: types.GOOGLEOATH
   };
 }
+
+export function addMovieSearch() {
+  return {
+    type: types.addMovieSearch,
+  };
+}

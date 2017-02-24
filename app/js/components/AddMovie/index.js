@@ -1,14 +1,14 @@
  import React, { Component } from 'react';
  import { AppRegistry, StyleSheet, Modal, Image, Platform, ScrollView } from 'react-native';
- import { Spinner, Text, View, Content, Container, Header, Title, Button, Icon, InputGroup, Input, ListItem, List, Radio, CheckBox, Thumbnail, Card, CardItem, H3, H1, H2,h4, Badge } from 'native-base';
+ import { Spinner, Text, View, Content, Container, Header, Title, Icon, Button, InputGroup, Input, ListItem, List, Radio, CheckBox, Thumbnail, Card, CardItem, H3, H1, H2,h4, Badge, Textarea } from 'native-base';
  import { Col, Row, Grid }                               from "react-native-easy-grid";
+ import BarOfSearch from "../NavBar/"
 
  export default class AddNewMovie extends Component  {
                 constructor(props) {
                         super(props);
                         this.state = {
-                            search: '',
-                            isSearchVisible: true,
+                            Search:'',
                             isModalVisible: false,
                             selectedItem: undefined,
                             results: {}
@@ -16,30 +16,12 @@
                     }
 
 
-    clearSearch(search){
-        this.setState({
-            search,
-        })
-    }
-
-
-setSearchVisible( isSearchVisible) {
-                this.setState({
-                    isSearchVisible,
-                });}
-
-setModalVisible( isModalVisible, selectedItem) {
+setModalVisible( isModalVisible, selectedItem ) {
                 this.setState({
                     isModalVisible,
                     selectedItem
                 });}
-
-clear() {
-        // clears Search bar
-        this.setState({
-            search:""
-}
-)};           
+              
 
 
     search() {
@@ -48,7 +30,7 @@ clear() {
             loading: true
         });
 
-        var searchURL = 'https://api.themoviedb.org/3/search/multi?api_key=04ac5e20700da696a4b482b8e3d1c26e&language=en-US&query='+ this.state.search;
+        var searchURL = 'https://api.themoviedb.org/3/search/multi?api_key=04ac5e20700da696a4b482b8e3d1c26e&language=en-US&query='+ this.props.AddNewMovie;
         fetch(searchURL)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -70,32 +52,6 @@ clear() {
 
     render() {
 
-        const headerTitle = (this.state.isSearchVisible) ? <view/> : <Header>
-                                                                        <Button transparent><Icon name="ios-menu"/></Button>
-                                                                        <Title>Home Video Catalog</Title>
-                                                                        <Button transparent onPress={()=>this.setSearchVisible(true)}><Icon name="ios-search"/></Button>
-                                                                    </Header>;
-
-        const barOfSearch = (!this.state.isSearchVisible ) ? <view/>: <Header searchBar rounded >
-                                                                            <InputGroup>
-                                                                                <Icon name="ios-search" />
-                                                                                <Input placeholder="Search" value={this.state.search}  onChangeText={(text) => this.setState({search:text})} onSubmitEditing={()=>this.search()}/>
-                                                                                <Button transparent onPress={()=>this.clearSearch(null)}><Icon name="ios-close"/></Button>
-                                                                            </InputGroup>
-                                                                            <Button transparent onPress={()=>this.setSearchVisible(false)}>Back</Button>
-                                                                        </Header>;    
-
-
-const header = <Header searchBar rounded>
-                    <Button transparent onPress={()=>""}><Icon name="ios-menu"/></Button>
-                        <InputGroup>
-                            <Icon name="ios-search" />
-                            <Input placeholder="Search for a Movie or TV show" value={this.state.search}  onChangeText={(text) => this.setState({search:text})} onSubmitEditing={()=>this.search()} />
-                            <Button transparent onPress={()=>this.clear()}><Icon name="ios-close"/></Button>
-                        </InputGroup>
-                        <Button transparent onPress={()=>this.search()}>Go</Button>
-                    </Header>
-        
 
 const itemSearchDisplay = ( this.state.loading ) ? <Spinner /> : <List dataArray={this.state.results} renderRow={(item)  =>
                                                                 
@@ -119,55 +75,45 @@ const itemDisplayModal = <Modal
                             >
                                     {!this.state.selectedItem ? <View /> : 
                                                                         <Card style={{paddingTop: 30}}>
+                                                                            <ScrollView>
                                                                             <CardItem>
-                                                                                <Image style={styles.modalImage} source={{uri:'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+ this.state.selectedItem.poster_path}}  />
-                                                                                <H3 header style={styles.negativeMargin }>
-                                                                                    {this.state.selectedItem.title}{this.state.selectedItem.name}
-                                                                                </H3>
+                                                                                <Image style={styles.negativeMargin} style={styles.modalImage} source={{uri:'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+ this.state.selectedItem.poster_path}}  />
+                                                                                <Input disabled value={this.state.selectedItem.title} value={this.state.selectedItem.name} />
                                                                             </CardItem>
                                                                                 
                                                                             <CardItem>
                                                                                 <H3 header>
                                                                                     Year:
                                                                                 </H3>
-                                                                                <H3 style={styles.negativeMargin }>
-                                                                                    <Text>
-                                                                                        {this.state.selectedItem.release_date}{this.state.selectedItem.first_air_date}
-                                                                                    </Text>
-                                                                                </H3>
+                                                                                <Input value={this.state.selectedItem.release_date} value={this.state.selectedItem.first_air_date} />
                                                                             </CardItem> 
 
                                                                             <CardItem>
                                                                                 <H3 header>
                                                                                     Summary:
                                                                                 </H3>
-                                                                                
-                                                                                    <H3 style={styles.negativeMargin }>
-                                                                                        <Text>
-                                                                                            {this.state.selectedItem.overview}
-                                                                                        </Text>
-                                                                                    </H3>
-                                                                                
+                                                                                    <Input multiline style={{height: 150}} value={this.state.selectedItem.overview} />
                                                                             </CardItem> 
                                                                            
                                                                             <CardItem>
-                                                                            <Button danger style={{alignSelf: 'flex-end'}} onPress={() => {
+                                                                            <Button block success style={{alignSelf: 'flex-end'}} onPress={() => {
                                                                                         this.setModalVisible(!this.state.isModalVisible, this.state.selectedItem)
                                                                                     }}>
                                                                                     Go Back
                                                                                 </Button>
                                                                             </CardItem>
+                                                                                </ScrollView>
                                                                           </Card>  
                                     }
                      </Modal>;                                                                                 
 
         return (
-                <Container scrollEnabled={ false }>
-                        { headerTitle }
-                        { barOfSearch }
-                    <Content scrollEnabled={ true }>
+                <Container>
+                    <Content>
+                        <BarOfSearch search={this.search.bind(this)} setSearch={this.state.search}/>
                         { itemSearchDisplay }
                         { itemDisplayModal }
+                        
                     </Content>
                 </Container>
 

@@ -12,7 +12,7 @@ var config = {
     messagingSenderId: "266886711745"
 };
 
-const initialState = {firebase: firebase.initializeApp(config), loginType: "", email: "", password: "", firebaseToken: ""};
+const initialState = {firebase: firebase.initializeApp(config), loginType: "", email: "", password: "", firebaseToken: "", search:""};
 
 export default (state = initialState, action) => {
 
@@ -35,6 +35,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loginType: "google"
+      };
+      case types.addMoveSearch:
+      return {
+        ...state,
+        search: ""
       };
     
     default:
